@@ -139,54 +139,25 @@ def run_try():
                     sys.exit(0)
             except:
                 pass
-            if len(job_links) == 0:
-                sys.exit(0)
+            # if  len(job_links) == 0:
+                # sys.exit(0)
             
             if break_flag:
                 break
 
             else:
                 for link in job_links:
-                    # фильтруем список вакансий на забаненые по тесту
-                    vacancy_id = get_vacancy_id_from_href(browser.current_url)
-                    if vacancy_id in bad_test_vacancies:
-                        continue
-                    else:
-                        browser.get(link)
-                    
-                    try:
-                        try:
-                            vacancy_name = browser.find_element(By.XPATH, '//*[@id="a11y-main-content"]/div[2]/div/div/h2/span/a/span')
-                            vacancy_salary = browser.find_element(By.XPATH, '//*[@id="a11y-main-content"]/div[2]/div/div/div[4]/div/span[1]/span')
-                            vacancy_company = browser.find_element(By.XPATH, '//*[@id="a11y-main-content"]/div[2]/div/div/div[6]/span[1]/span/a/span')
-                            print(f"Нажал откликнуться - {vacancy_name} {vacancy_company} {vacancy_salary}")
-                        except:
-                            pass
-                        # link.send_keys(Keys.CONTROL + Keys.RETURN)
-                        
-                        
-                        time.sleep(random.randint(3, 5))
-                        
-                            
-                    
-                        check_and_fill_salary_form(browser, url, text_ot)
-                    except:
-                        pass
+                    browser.get(link)
+                    time.sleep(random.randint(3, 5))
                     if link == job_links[len(job_links)-1]:
                         break_flag = True
-            # encoded_base_url = urllib.parse.quote_plus(url)
-            # if encoded_base_url != browser.current_url:
-            #     if 'vacancy_response' in browser.current_url:
-            #         check_and_fill_salary_form(browser, url, text_ot)
-            #     else:
-            #         input('Issue page found. Paused until you return to the good URL. Press any key to proceed...')
+            
 
     browser.quit()
 
-run_try()
-# while True:
-#     try:
-#         run_try()
-#     except Exception as e:
-#         print(e)
-#         pass
+while True:
+    try:
+        run_try()
+    except Exception as e:
+        print(e)
+        pass
