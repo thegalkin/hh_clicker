@@ -133,13 +133,6 @@ def run_try():
             job_links = []
             for button in job_buttons:
                 job_links.append(button.get_attribute('href'))
-
-            try: 
-                if len(browser.find_element(By.XPATH, '//*[@id="a11y-main-content"]/div[2]/div/div/div[8]/div[1]/a/div/span')) > 0:
-                    print("На странице найдены вакансии, на которые вы уже откликались. Прекращаю отклики, т.к. дальше будут только откликнутые.")
-                    sys.exit(0)
-            except:
-                pass
             try:
                 if len(browser.find_element(By.XPATH, '/html/body/div[7]/div/div/div/div[2]/div[1]/div')) > 0:
                     print("Достигнут лимит по откликам. Запускайте скрипт через 24 часа.")
