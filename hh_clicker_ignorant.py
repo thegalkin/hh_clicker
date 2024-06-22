@@ -102,7 +102,7 @@ def run_try():
     browser = webdriver.Chrome(service=service, options=options)
     # browser.set_page_load_timeout(2)
     excluded_text = '1C,1С,Сбор и анализ требований бизнеса'
-    base_url = f'https://hh.ru/search/vacancy?area=1&salary=260000&excluded_text={excluded_text}&employment=full&professional_role=148&text=системный+аналитик&schedule=remote&hhtmFrom=account_login&order_by=salary_desc'
+    base_url = f'https://hh.ru/search/vacancy?area=1&salary=260000&excluded_text=%7Bexcluded_text%7D&employment=full&professional_role=148&text=системный+аналитик&schedule=remote&order_by=salary_desc&page=1'
     text_ot = 'Добрый день, мои зарплатные ожидания зависят от сложности проекта, но минимальная вилка - 300т.р. чистыми'
     page_param = '&page='
     num_pages = 30
